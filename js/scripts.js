@@ -15,10 +15,10 @@ $(document).ready(function() {
     $("#placesList").empty();
     for (var idx = 0; idx < listOfSpots.places.length; idx ++) {
         spot = listOfSpots.places[idx];
-      $("#placesList").append("<li>" + '<h5 class="mt-0">' + spot.location +  '</h5>' + "</li>");
+      $("#placesList").append("<li id=" + idx*2 + ">" + spot.location + "</li>");
 
       $("#placesList").append(
-        '<div class="media">' +
+        '<div class="media" id=' + idx*2+1 + '>' +
     //      '<img src="..." class="mr-3" alt="...">' +
           '<div class="media-body">' +
             '<h6>' + spot.timeOfYear + '</h6>' +
@@ -27,12 +27,17 @@ $(document).ready(function() {
           '</div>' +
         '</div>'
       );
+      $("#placesList").children("div").hide();
+    };
+    document.getElementById("placesList").addEventListener("click", function(event) {
+      console.log(event.target.id);
+      $("#" + event.target.id +1 ).toggle();
+    });
       // $("#placesList").children().hide();
       // console.log($("#placesList").children()[0]);
       // $("#placesList").children()[idx*2].click(function() {
       //    $("#placesList").children()[idx+1].toggle();
       //  })
-    };
 
     $(".results").show();
     // console.log(listOfSpots.places);
