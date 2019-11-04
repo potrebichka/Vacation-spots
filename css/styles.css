@@ -5,3 +5,7 @@
   font-size: 100%;
   box-sizing: border-box;
 }
+.results {
+  margin-top: 30px;
+  display: none;
+}
